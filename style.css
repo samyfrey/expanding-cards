@@ -1,13 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200&display=swap');
+
+
 * {
     box-sizing: border-box;
 }
 
 body {
+    font-family: 'Mulish', sans-serif;
     display: flex;
-    flex-direction:column;
+    /* flex-direction:column; */
     align-items: center;
     justify-content: center;
     height: 100vh;
     overflow: hidden;
     margin: 0
+}
+
+.container{
+    /* this makes all immediate children - panel classes - display horizontally in row */
+    display: flex;
+    /* viewport width  */
+    width: 90vw
+}
+
+.panel {
+    background-size: cover;
+    background-position: center;
+    /* to avoid img background repeat */
+    background-repeat: no-repeat;
+    /* 80 of the viewport */
+    height: 80vh;
+    border-radius: 50px;
+    /* color of the text inside */
+    color: #fff;
+    /* when hover over it */
+    cursor: pointer;
+    /* this is the width */
+    flex: 0.5;
+    /*  to separate each box */
+    margin: 10px;
+    /* h3 will be absolute and the container box relative */
+    position: relative;
+    transition: flex 0.7s ease-in;
+}
+
+.panel h3 {
+    font-size: 24px;
+    /* this is in relation to position of the panel container */
+    position: absolute;
+    /*  to position the text inside  */
+    bottom: 20px;
+    left: 20px;
+    margin: 0;
+    /* when inactive, gets unhidden when active */
+    opacity: 0;
+}
+
+.panel.active{
+    /* as opposed to 0.5 in .panel */
+    flex: 5;
+}
+
+.panel.active h3 {
+    /* h3 shows up when active in reference to panel h3 opacity 0 */
+    opacity: 1; 
+}
+
+/* any style here will only take effect if the screen is under 480 pixels */
+@media(max-width: 480px) {
+    .container {
+        width: 100vw
+    }
+    .panel:nth-of-type(4), 
+    .panel:nth-of-type(5) {
+        display: none;
+    }
+
 }
